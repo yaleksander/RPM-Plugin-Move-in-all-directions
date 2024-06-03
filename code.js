@@ -11,7 +11,7 @@ function mod(x, m)
 
 function moveMapObj(id, dir, camera)
 {
-	if (RPM.Scene.Map.current.isBattleMap || (RPM.Core.ReactionInterpreter.blockingHero && (RPM.Core.ReactionInterpreter.currentObject.isHero || RPM.Core.ReactionInterpreter.currentReaction.currentReaction.blockingHero)))
+	if (RPM.Scene.Map.current.isBattleMap)
 		return;
 	RPM.Core.MapObject.search(id, (result) =>
 	{
