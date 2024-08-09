@@ -40,6 +40,6 @@ RPM.Manager.Plugins.registerCommand(pluginName, "Move 1 step in angle", (id, dir
 
 RPM.Manager.Plugins.registerCommand(pluginName, "Move 1 step in direction", (id, x, y, camera) =>
 {
-	if (x != 0 && y != 0)
+	if (x != 0 || y != 0)
 		moveMapObj(id, Math.atan2(-y, x) * 180 / Math.PI, camera);
 });
