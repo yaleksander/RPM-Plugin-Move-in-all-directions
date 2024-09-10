@@ -20,8 +20,8 @@ function moveMapObj(id, dir, camera)
             const cam = RPM.Scene.Map.current.camera;
             const angle = cam.getHorizontalAngle(cam.getThreeCamera().position, cam.targetPosition);
             const dist = Math.min(1, result.object.speed.getValue() * RPM.Core.MapObject.SPEED_NORMAL * RPM.Manager.Stack.averageElapsedTime) * RPM.Datas.Systems.SQUARE_SIZE;
-            result.object.move(RPM.Common.Enum.Orientation.South, dist * Math.cos(dir * Math.PI / 180), 270 + (camera ? angle : 0), camera);
-            result.object.move(RPM.Common.Enum.Orientation.South, dist * Math.sin(dir * Math.PI / 180), 180 + (camera ? angle : 0), camera);
+            result.object.move(RPM.Common.Enum.Orientation.South, dist * Math.cos(dir * Math.PI / 180), 270 + (camera ? angle : -90), camera);
+            result.object.move(RPM.Common.Enum.Orientation.South, dist * Math.sin(dir * Math.PI / 180), 180 + (camera ? angle : -90), camera);
             if (!result.object.currentStateInstance.directionFix)
             {
                 if (camera)
@@ -40,6 +40,6 @@ RPM.Manager.Plugins.registerCommand(pluginName, "Move 1 step in angle", (id, dir
 
 RPM.Manager.Plugins.registerCommand(pluginName, "Move 1 step in direction", (id, x, y, camera) =>
 {
-	if (x != 0 || y != 0)
-		moveMapObj(id, Math.atan2(-y, x) * 180 / Math.PI, camera);
+    if (x != 0 || y != 0)
+        moveMapObj(id, Math.atan2(-y, x) * 180 / Math.PI, camera);
 });
